@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "b6aaee72-1898-4bf1-9b19-05bb9b86862a"
+        },
+        "name": {
+            "value": "toxicapi"
+        },
+        "location": {
+            "value": "Canada Central"
+        },
+        "hostingPlanName": {
+            "value": "ASP-htn2021-9b6f"
+        },
+        "serverFarmResourceGroup": {
+            "value": "htn2021"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "storageAccountName": {
+            "value": "storageaccounthtn208a3a"
+        },
+        "sku": {
+            "value": "Dynamic"
+        },
+        "skuCode": {
+            "value": "Y1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "use32BitWorkerProcess": {
+            "value": true
+        }
+    }
+}
