@@ -28,9 +28,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Since the Covid-19 crisis we have been using more instant messaging applications such as Discord
-and Slack. We might have toxic encounters on those platforms. The goal of this project is to provide
-an API to detect toxicity in a sentence. As an example, a Discord bot was also create to consume the API.
+Since the Covid-19 crisis we have been using instant messaging applications such as Discord
+and Slack more frequently. We might have toxic encounters on those platforms. The goal of this project is to provide
+an API to detect toxicity in a sentence. As an example, a Discord bot was also created to consume the API.
 ### Built With
 
 * [Azure](https://azure.microsoft.com/en-us/)
@@ -68,4 +68,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/vboivin/hackthenorth2021](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/vboivin/hackthenorth2021](https://github.com/vboivin/hackthenorth2021)
