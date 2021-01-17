@@ -1,6 +1,11 @@
-<br />
-<p align="center"><h3 align="center">Toxic API & Discord bot</h3><p align="center">An API to detect toxicity in messages and a bot to prevent it.</p></p>
 
+<p align="center">
+    <h3 align="center">Toxic API & Discord bot </h3>
+    <div align="center"> 
+        <img src="https://dev.azure.com/toxicapi/htn2021/_apis/build/status/hackthenorth2021?branchName=main"/> 
+    </div>
+    <p align="center">An API to detect toxicity in messages and a bot to prevent it.</p>
+</p>
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -10,9 +15,6 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -35,15 +37,6 @@ an API to detect toxicity in a sentence. As an example, a Discord bot was also c
 * [Typescript](https://www.typescriptlang.org/)
 * [Nodejs](https://nodejs.org/en/)
 * [Azure Functions](https://azure.microsoft.com/en-us/services/functions/)
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 
 <!-- ROADMAP -->
 ## Roadmap
