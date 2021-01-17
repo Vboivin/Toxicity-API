@@ -1,7 +1,7 @@
 {
-  "name": "",
-  "version": "",
-  "scripts" : {
+  "name": "discordBot",
+  "version": "1.0.0",
+  "scripts": {
     "build": "tsc",
     "build:production": "npm run prestart && npm prune --production",
     "watch": "tsc --w",
@@ -10,7 +10,10 @@
     "start": "npm-run-all --parallel start:host watch",
     "test": "echo \"No tests yet...\""
   },
-  "description": "",
+  "description": "Discord bot using toxicity API",
+  "license": "MIT",
+  "author": "Vincent Boivin",
+  "repository": "https://github.com/vboivin/toxicity.git",
   "devDependencies": {
     "@azure/functions": "^1.0.1-beta1",
     "npm-run-all": "^4.1.5",
