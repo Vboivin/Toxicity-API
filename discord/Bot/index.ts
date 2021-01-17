@@ -1,17 +1,80 @@
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+import * as dotenv from 'dotenv';
+import * as Discord from 'discord.js';
+import axios, { AxiosPromise } from 'axios';
+import {Message} from "discord.js";
 
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
+dotenv.config();
 
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: responseMessage
-    };
-
+interface Labels {
+    insult: boolean,
+    toxicity: boolean,
+    severe_toxicity: boolean,
+    threat: boolean
 };
 
-export default httpTrigger;
+interface ToxicityResults {
+    results: Labels,
+    filteredSentence: string
+};
+
+bootstrapBot();
+
+async function assessToxicity(sentence: string): Promise<ToxicityResults> {
+    const toxicityResult = await axios.post(process.env.TOXICITY_API, {
+        sentence
+    });
+    return {...toxicityResult.data};
+}
+
+async function kickUser(msg: Message): Promise<boolean> {
+    const member = await msg.mentions.members.first();
+    member.kick();
+    return member.kickable;
+}
+
+function isMsgToxic(results: Labels): boolean {
+    return Object.keys(results).some(label => results[label] === true);
+}
+
+function displayKickMessage(msg: Message): void {
+    const { author, channel } = msg;
+    channel.send(`Should I kick ${author}? Enter \"!kick ${author}\" to kick them.`)
+}
+
+function bootstrapBot() {
+    const client = new Discord.Client();
+
+    client.on('ready', () => {
+        console.log(`Logged in as ${client.user.tag}!`);
+    })
+
+    client.on('message', async (msg) => {
+        const { author, channel, content, mentions } = msg;
+
+        if (author.bot) {
+            return;
+        }
+
+        if ( content.includes('!kick') ) {
+            const faultyUser = mentions.members.first();
+            console.log(`Kicking ${faultyUser}!`);
+            if ( await kickUser(msg) ) {
+                channel.send(`${faultyUser} was kicked!`)
+            }
+            return;
+        }
+
+        const { results } = await assessToxicity(content.toLowerCase());
+
+        console.log(content);
+
+        if (isMsgToxic(results)) {
+            channel.send(`${author} said \"${content}\" which is pretty toxic!`);
+            displayKickMessage(msg);
+        } else {
+            console.log(`${content} is not considered toxic.`);
+        }
+    })
+
+    client.login(process.env.TOKEN);
+}
