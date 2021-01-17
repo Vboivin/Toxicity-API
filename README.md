@@ -41,7 +41,7 @@ an API to detect toxicity in a sentence. As an example, a Discord bot was also c
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/vboivin/hackthenorth2021/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/vboivin/toxicity/issues) for a list of proposed features (and known issues).
 
 
 
@@ -68,4 +68,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/vboivin/hackthenorth2021](https://github.com/vboivin/hackthenorth2021)
+Project Link: [https://github.com/vboivin/toxicity](https://github.com/vboivin/toxicity)

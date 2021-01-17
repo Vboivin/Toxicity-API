@@ -12,7 +12,7 @@
   },
   "description": "An API used to evaluate the toxicity of a sentence using Tensorflow",
   "license": "MIT",
-  "repository": "https://github.com/Vboivin/hackthenorth2021.git",
+  "repository": "https://github.com/Vboivin/toxicity.git",
   "author": "Vincent Boivin",
   "devDependencies": {
     "@azure/functions": "^1.2.2",
