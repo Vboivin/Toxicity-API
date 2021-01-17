@@ -26,6 +26,9 @@
         "use32BitWorkerProcess": {
             "type": "bool"
         },
+        "linuxFxVersion": {
+            "type": "string"
+        },
         "sku": {
             "type": "string"
         },
@@ -47,14 +50,13 @@
             "apiVersion": "2018-11-01",
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/sites",
-            "kind": "functionapp",
+            "kind": "functionapp,linux",
             "location": "[parameters('location')]",
             "tags": {
-                "Language": "Nodejs",
                 "Project": "htn2021"
             },
             "dependsOn": [
-                "microsoft.insights/components/toxicapi",
+                "microsoft.insights/components/toxicitycheck",
                 "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
             ],
@@ -71,34 +73,23 @@
                             "value": "node"
                         },
                         {
-                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
-                            "value": "~14"
-                        },
-                        {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                            "value": "[reference('microsoft.insights/components/toxicapi', '2015-05-01').InstrumentationKey]"
+                            "value": "[reference('microsoft.insights/components/toxicitycheck', '2015-05-01').InstrumentationKey]"
                         },
                         {
                             "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
-                            "value": "[reference('microsoft.insights/components/toxicapi', '2015-05-01').ConnectionString]"
+                            "value": "[reference('microsoft.insights/components/toxicitycheck', '2015-05-01').ConnectionString]"
                         },
                         {
                             "name": "AzureWebJobsStorage",
                             "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
-                        },
-                        {
-                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
-                        },
-                        {
-                            "name": "WEBSITE_CONTENTSHARE",
-                            "value": "[concat(toLower(parameters('name')), 'ad66')]"
                         }
                     ],
-                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
+                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
+                    "linuxFxVersion": "[parameters('linuxFxVersion')]"
                 },
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "clientAffinityEnabled": true
+                "clientAffinityEnabled": false
             }
         },
         {
@@ -106,9 +97,8 @@
             "name": "[parameters('hostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[parameters('location')]",
-            "kind": "",
+            "kind": "linux",
             "tags": {
-                "Language": "Nodejs",
                 "Project": "htn2021"
             },
             "dependsOn": [],
@@ -116,7 +106,8 @@
                 "name": "[parameters('hostingPlanName')]",
                 "workerSize": "[parameters('workerSize')]",
                 "workerSizeId": "[parameters('workerSizeId')]",
-                "numberOfWorkers": "[parameters('numberOfWorkers')]"
+                "numberOfWorkers": "[parameters('numberOfWorkers')]",
+                "reserved": true
             },
             "sku": {
                 "Tier": "[parameters('sku')]",
@@ -125,11 +116,10 @@
         },
         {
             "apiVersion": "2020-02-02-preview",
-            "name": "toxicapi",
+            "name": "toxicitycheck",
             "type": "microsoft.insights/components",
-            "location": "canadacentral",
+            "location": "eastus",
             "tags": {
-                "Language": "Nodejs",
                 "Project": "htn2021"
             },
             "dependsOn": [],
@@ -147,7 +137,6 @@
             "name": "[parameters('storageAccountName')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Language": "Nodejs",
                 "Project": "htn2021"
             },
             "sku": {

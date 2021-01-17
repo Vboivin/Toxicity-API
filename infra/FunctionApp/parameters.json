@@ -6,13 +6,13 @@
             "value": "b6aaee72-1898-4bf1-9b19-05bb9b86862a"
         },
         "name": {
-            "value": "toxicapi"
+            "value": "toxicitycheck"
         },
         "location": {
-            "value": "Canada Central"
+            "value": "East US"
         },
         "hostingPlanName": {
-            "value": "ASP-htn2021-9b6f"
+            "value": "ASP-htn2021-92b4"
         },
         "serverFarmResourceGroup": {
             "value": "htn2021"
@@ -21,7 +21,7 @@
             "value": false
         },
         "storageAccountName": {
-            "value": "storageaccounthtn208a3a"
+            "value": "storageaccounthtn209732"
         },
         "sku": {
             "value": "Dynamic"
@@ -39,7 +39,10 @@
             "value": "1"
         },
         "use32BitWorkerProcess": {
-            "value": true
+            "value": false
+        },
+        "linuxFxVersion": {
+            "value": "Node|14"
         }
     }
 }

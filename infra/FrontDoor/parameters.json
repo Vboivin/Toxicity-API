@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "frontdoors_toxicitycheckfd_name": {
+            "value": "toxicitycheckfd"
+        },
+        "frontdoorwebapplicationfirewallpolicies_toxicitycheckfdebb4d56a117c43589c3a9728aa207955_externalid": {
+            "value": "/subscriptions/b6aaee72-1898-4bf1-9b19-05bb9b86862a/resourceGroups/htn2021/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/toxicitycheckfdebb4d56a117c43589c3a9728aa207955"
+        }
+    }
+}

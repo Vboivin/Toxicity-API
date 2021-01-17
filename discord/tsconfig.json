@@ -4,9 +4,7 @@
     "target": "es6",
     "outDir": "dist",
     "rootDir": ".",
-    "lib": ["ES2015", "es5"],
     "sourceMap": true,
-    "strict": false,
-    "skipLibCheck": true
+    "strict": false
   }
 }
