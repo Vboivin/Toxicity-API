@@ -32,7 +32,7 @@ Since the Covid-19 crisis, we have been using instant messaging applications suc
 and Slack more frequently. We might have toxic encounters on those platforms. The goal of this project is to provide
 an API to assess the toxicity in a sentence. As an example, a Discord bot was also created to consume the API.
 
-### [Bot Example](https://cdn.discordapp.com/attachments/800298412641222678/800373749388017694/botexample.gif)
+### ![Bot Example](./assets/bot_example.gif)
 
 ### Built With
 Azure was used for the CI/CD (Azure Pipelines), and it was also used to host the API using Azure Functions.
@@ -74,4 +74,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/vboivin/toxicity](https://github.com/vboivin/toxicity)
+[Project Link](https://github.com/vboivin/toxicity-api)
